@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Friend Finder</title>
+	<link rel="stylesheet" type="text/css" href="../assets/reset.css">
+	<link rel="stylesheet" type="text/css" href="../assets/slate.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://use.fontawesome.com/a8f1ca4384.js"></script>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+<div class="navbar navbar-inverse">
+  	<div class="container-fluid">
+    	<div class="navbar-header">
+      		<a class="navbar-brand" href="#">Friend Finder</a>
+    	</div>
+      	<ul class="nav navbar-nav navbar-right">
+        	<li><a href="survey">Survey</a></li>
+      	</ul>
+      	<ul class="nav navbar-nav navbar-right">
+        	<li><a href="/">Home</a></li>
+      	</ul>
+    </div>
+</div>
+<div class="container wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="jumbotron">
+				<h1>Survey Questions</h1>
+			</div>
+		</div>
+	</div>
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+			<div class="panel panel-danger">
+  				<div class="panel-heading">
+    			<h3 class="panel-title"><i class="fa fa-user" aria-hidden="true"></i>     About You</h3>
+  				</div>
+  				<div class="panel-body">
+              <div class="form-group">
+                <label for="name" class="col-lg-2 control-label">Name (Required)</label>
+                 <div class="col-lg-10">
+                  <input type="text" class="form-control" id="name" placeholder="Name">
+                 </div>
+                 <br>
+                 <label for="photoLink" class="col-lg-2 control-label">Link to Photo Image (Required)</label>
+                <div class="col-lg-10">
+                 <input type="text" class="form-control" id="photoLink" placeholder="Photo Link">
+                </div>
+            </div>
+ 			    </div>
+			</div>
+		</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10">
+    <div class="panel panel-default">
+      <div class="panel-body" id="surveyQuestions">
+      <!--The survey questions will be display here-->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+var survey={
+  question: [
+    'Your mind is always  buzzing with unexplored ideas and plans.',
+    'Generally speaking, you rely more on your experience than your imagination.',
+    'You find it easy to stay relaxed and focused even when there is some pressure.',
+    'You rarely do something just out of sheer curiosity.',
+    'People can rarely upset you.',
+    'It is often difficult for you to relate to other people’s feelings.',
+    'In a discussion, truth should be more important than people’s sensitivities.',
+    'You rarely get carried away by fantasies and ideas.',
+    'You think that everyone’s views should be respected regardless of whether they are supported by facts or not.',
+    'You feel more energetic after spending time with a group of people.'
+  ],
+  displayQuestions: function(){
+    var questionN;
+    for (var i=0; i<survey.question.length; i++){
+      questionN=1+i;
+      $('#surveyQuestions').append('<div class="form-group"><label for="select" class="col-lg-8 control-label">Question '+questionN+'<br>'+survey.question[i]+'</label><div class="col-lg-4"><select class="form-control" id="select"><option>1 (Strongly Disagree)</option><option>2</option><option>3</option><option>4</option><option>5 (Strongly Agree)</option></select><br></div></div>')
+    }
+    $('#surveyQuestions').append('<div class="row"><div class="col-lg-1"></div><a href="#" class="btn btn-danger col-lg-10"><i class="fa fa-check-square"></i>     Submit</a>')
+  }
+}
+
+survey.displayQuestions();
+
+</script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

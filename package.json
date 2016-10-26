@@ -1,0 +1,27 @@
+{
+  "name": "friendfinder",
+  "version": "1.0.0",
+  "description": "compatibility-based \"FriendFinder\" appliaction",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gael7/FriendFinder.git"
+  },
+  "author": "Gael Arrambide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gael7/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/gael7/FriendFinder#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "inquirer": "^1.2.2",
+    "path": "^0.12.7"
+  }
+}

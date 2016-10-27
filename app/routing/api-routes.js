@@ -1,3 +1,4 @@
+module.exports=function(app, path){
 app.get('/api/:friends?', function (req, res) {
   var chosen = req.params.characters;
 
@@ -27,3 +28,4 @@ app.post('/api/new', function (req, res) {
 	// We then display the JSON to the users
 	res.json(newfriend);
 });
+};

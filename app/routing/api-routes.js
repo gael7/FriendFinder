@@ -1,3 +1,6 @@
+var data=require('../data/friends.js');
+var friends=data.friends;
+
 module.exports=function(app, path){
 app.get('/api/:friends?', function (req, res) {
   var chosen = req.params.characters;
@@ -19,13 +22,11 @@ app.get('/api/:friends?', function (req, res) {
 });
 
 app.post('/api/new', function (req, res) {
-	var newfriend = req.body;
-	console.log(newfriend);
+	var newFriend = req.body;
 
-	// We then add the json the user sent to the character array
-	friends.push(newfriend);
 
-	// We then display the JSON to the users
-	res.json(newfriend);
+	friends.push(newFriend);
+  	console.log(friends);
+	res.json(newFriend);
 });
 };

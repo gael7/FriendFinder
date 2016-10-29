@@ -16,7 +16,7 @@
       		<a class="navbar-brand" href="#">Friend Finder</a>
     	</div>
       	<ul class="nav navbar-nav navbar-right">
-        	<li><a href="survey">Survey</a></li>
+        	<li><a href="/survey">Survey</a></li>
       	</ul>
       	<ul class="nav navbar-nav navbar-right">
         	<li><a href="/">Home</a></li>
@@ -85,10 +85,33 @@ var survey={
     var questionN;
     for (var i=0; i<survey.question.length; i++){
       questionN=1+i;
-      $('#surveyQuestions').append('<div class="form-group"><label for="select" class="col-lg-8 control-label">Question '+questionN+'<br>'+survey.question[i]+'</label><div class="col-lg-4"><select class="form-control" id="select"><option>1 (Strongly Disagree)</option><option>2</option><option>3</option><option>4</option><option>5 (Strongly Agree)</option></select><br></div></div>')
+      $('#surveyQuestions').append('<div class="form-group"><label for="select" class="col-lg-8 control-label">Question '+questionN+'<br>'+survey.question[i]+'</label><div class="col-lg-4"><select class="form-control" id="select'+i+'"><option>1 (Strongly Disagree)</option><option>2</option><option>3</option><option>4</option><option>5 (Strongly Agree)</option></select><br></div></div>')
     }
-    $('#surveyQuestions').append('<div class="row"><div class="col-lg-1"></div><a href="#" class="btn btn-danger col-lg-10"><i class="fa fa-check-square"></i>     Submit</a>')
-  }
+		$('#surveyQuestions').append('<div class="row"><div class="col-lg-1"></div><a href="#" class="btn btn-danger col-lg-10" id="submit"><i class="fa fa-check-square"></i>     Submit</a>')
+		$('#submit').on('click', function () {
+					console.log("submit click");
+				var scores=[];
+				for (var a=0; a<10;a++){
+					var answer=$('#select'+a).val().trim();
+					scores.push(parseInt(answer));
+				}
+				var newFriend = {
+					name: $('#name').val().trim(),
+					photo: $('#photoLink').val().trim(),
+					scores: scores,
+				};
+				
+				console.log(newFriend);
+				var currentURL = window.location.origin;
+
+				$.post(currentURL + '/api/new', newFriend).done(function (data) {
+						console.log(data);
+						alert('New friend added!');
+					});
+
+				return false;
+			});
+	}
 }
 
 survey.displayQuestions();
